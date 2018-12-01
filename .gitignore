@@ -7,3 +7,7 @@
 
 # .tfvars files
 *.tfvars
+
+# Others
+backend.tf
+terraform.tfvars
