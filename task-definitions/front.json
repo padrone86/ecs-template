@@ -1,0 +1,33 @@
+[
+  {
+    "name" : "${product}-${env}-front-container",
+    "portMappings": [
+      {
+        "hostPort": 80,
+        "protocol": "tcp",
+        "containerPort": 80
+      }
+    ],
+    "cpu": ${cpu},
+    "memory": ${memory},
+    "memoryReservation": ${memory},
+    "image": "${image-url}:latest",
+    "environment": [
+      {
+        "name": "HOGE",
+        "value": "${hoge}"
+      }
+    ],
+    "healthCheck": {
+      "retries": 10,
+      "command": [
+        "CMD-SHELL",
+        "curl http://localhost/ || exit 1"
+      ],
+      "timeout": 20,
+      "interval": 60,
+      "startPeriod": 120
+    },
+    "essential": true
+  }
+]

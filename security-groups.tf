@@ -89,7 +89,7 @@ resource "aws_security_group_rule" "security-group-front-in-rule-alb" {
 
 # Out:	ALL OK
 resource "aws_security_group_rule" "security-group-front-out-rule-all" {
-  security_group_id        = "${aws_security_group.security-group-front.id}"
+  security_group_id = "${aws_security_group.security-group-front.id}"
   type              = "egress"
   from_port         = 0
   to_port           = 0
