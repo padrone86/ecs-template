@@ -1,0 +1,33 @@
+[
+  {
+    "name" : "${product}-${env}-api-container",
+    "portMappings": [
+      {
+        "hostPort": 8080,
+        "protocol": "tcp",
+        "containerPort": 8080
+      }
+    ],
+    "cpu": ${cpu},
+    "memory": ${memory},
+    "memoryReservation": ${memory},
+    "image": "${image-url}:latest",
+    "environment": [
+      {
+        "name": "FUGA",
+        "value": "${fuga}"
+      }
+    ],
+    "healthCheck": {
+      "retries": 10,
+      "command": [
+        "CMD-SHELL",
+        "curl http://localhost:8080/ || exit 1"
+      ],
+      "timeout": 20,
+      "interval": 60,
+      "startPeriod": 120
+    },
+    "essential": true
+  }
+]
