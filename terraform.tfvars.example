@@ -1,6 +1,6 @@
 region = "ap-northeast-1"
-env = "dev"
 product = "sample"
+profile = "sample"
 db_storage = "64"
 db_name = "sample_db"
 db_user = "sample_user"

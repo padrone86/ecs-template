@@ -25,6 +25,10 @@ resource "aws_ecs_task_definition" "front-task-definition" {
   requires_compatibilities = ["FARGATE"]
   cpu                      = "${var.front_cpu}"
   memory                   = "${var.front_memory}"
+
+  provisioner "local-exec" {
+    command = "./push-image.sh ${var.profile} front ${aws_ecr_repository.repository-front.name} ${aws_ecr_repository.repository-front.repository_url}"
+  }
 }
 
 # API
@@ -50,5 +54,8 @@ resource "aws_ecs_task_definition" "api-task-definition" {
   requires_compatibilities = ["FARGATE"]
   cpu                      = "${var.api_cpu}"
   memory                   = "${var.api_memory}"
-}
 
+  provisioner "local-exec" {
+    command = "./push-image.sh ${var.profile} api ${aws_ecr_repository.repository-front.name} ${aws_ecr_repository.repository-front.repository_url}"
+  }
+}
