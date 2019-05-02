@@ -31,6 +31,8 @@ resource "aws_ecs_service" "front-service" {
     container_name   = "${var.product}-${terraform.workspace}-front-container"
     container_port   = 80
   }
+
+  depends_on = ["aws_ecs_service.api-service"]
 }
 
 # API
@@ -54,5 +56,6 @@ resource "aws_ecs_service" "api-service" {
     container_name   = "${var.product}-${terraform.workspace}-api-container"
     container_port   = 8080
   }
-}
 
+  depends_on = ["aws_alb.alb"]
+}

@@ -8,6 +8,11 @@
         "containerPort": 80
       }
     ],
+    "command": [
+      "/bin/sh",
+      "-c",
+      "nginx -g 'daemon off;'"
+    ],
     "cpu": ${cpu},
     "memory": ${memory},
     "memoryReservation": ${memory},
@@ -22,7 +27,7 @@
       "retries": 10,
       "command": [
         "CMD-SHELL",
-        "curl http://localhost/ || exit 1"
+        "curl -f http://localhost/ || exit 1"
       ],
       "timeout": 20,
       "interval": 60,
