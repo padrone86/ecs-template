@@ -56,6 +56,6 @@ resource "aws_ecs_task_definition" "api-task-definition" {
   memory                   = "${var.api_memory}"
 
   provisioner "local-exec" {
-    command = "./push-image.sh ${var.profile} api ${aws_ecr_repository.repository-front.name} ${aws_ecr_repository.repository-front.repository_url}"
+    command = "./push-image.sh ${var.profile} api ${aws_ecr_repository.repository-api.name} ${aws_ecr_repository.repository-api.repository_url}"
   }
 }
