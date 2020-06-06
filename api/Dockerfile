@@ -1,13 +1,13 @@
-FROM alpine:3.6
+FROM alpine:3.12
 
-RUN apk update && \
-    apk add --no-cache nginx
+RUN apk update && apk upgrade
+RUN apk add npm
+RUN apk add curl
 
-ADD app /app
-ADD default.conf /etc/nginx/conf.d/default.conf
+RUN npm install -g json-server
+
+ADD ./example.json /var/tmp/
 
 EXPOSE 8080
 
-RUN mkdir -p /run/nginx
-
-CMD nginx -g "daemon off;"
+CMD [ "json-server", "-H", "0.0.0.0", "-p", "8080", "-w", "/var/tmp/example.json" ]

@@ -29,7 +29,7 @@ resource "aws_alb_target_group" "alb-target-group-api" {
 
   health_check {
     interval            = 60
-    path                = "/health-chesk"
+    path                = "/objects"
     protocol            = "HTTP"
     timeout             = 20
     unhealthy_threshold = 4
@@ -55,4 +55,3 @@ resource "aws_alb_listener" "alb-listener-api" {
     type             = "forward"
   }
 }
-
