@@ -20,29 +20,6 @@ resource "aws_alb" "alb" {
 
 # ALB target group
 
-resource "aws_alb_target_group" "alb-target-group-front" {
-  name        = "${var.product}-${terraform.workspace}-alb-tg-front"
-  port        = 80
-  protocol    = "HTTP"
-  vpc_id      = "${aws_vpc.vpc.id}"
-  target_type = "ip"
-
-  health_check {
-    interval            = 60
-    path                = "/"
-    protocol            = "HTTP"
-    timeout             = 20
-    unhealthy_threshold = 4
-    matcher             = 200
-  }
-
-  tags {
-    Name    = "${var.product}-${terraform.workspace}-alb-target-group-front"
-    Product = "${var.product}"
-    Env     = "${terraform.workspace}"
-  }
-}
-
 resource "aws_alb_target_group" "alb-target-group-api" {
   name        = "${var.product}-${terraform.workspace}-alb-tg-api"
   port        = 8080
@@ -52,7 +29,7 @@ resource "aws_alb_target_group" "alb-target-group-api" {
 
   health_check {
     interval            = 60
-    path                = "/api/authentication"
+    path                = "/health-chesk"
     protocol            = "HTTP"
     timeout             = 20
     unhealthy_threshold = 4
@@ -67,16 +44,6 @@ resource "aws_alb_target_group" "alb-target-group-api" {
 }
 
 # ALB Listener
-resource "aws_alb_listener" "alb-listener-front" {
-  load_balancer_arn = "${aws_alb.alb.arn}"
-  port              = "80"
-  protocol          = "HTTP"
-
-  default_action {
-    target_group_arn = "${aws_alb_target_group.alb-target-group-front.arn}"
-    type             = "forward"
-  }
-}
 
 resource "aws_alb_listener" "alb-listener-api" {
   load_balancer_arn = "${aws_alb.alb.arn}"

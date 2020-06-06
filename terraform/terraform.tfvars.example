@@ -1,7 +1,5 @@
 region = "ap-northeast-1"
 product = "sample"
 profile = "sample"
-front_cpu = "1024"
-front_memory = "2048"
 api_cpu = "1024"
 api_memory = "2048"
