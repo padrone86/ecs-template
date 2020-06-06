@@ -1,8 +1,16 @@
 # Variables settings
-variable "region" {}
+variable "region" {
+}
 
-variable "profile" {}
-variable "product" {}
+variable "profile" {
+}
 
-variable "api_cpu" {}
-variable "api_memory" {}
+variable "product" {
+}
+
+variable "api_cpu" {
+}
+
+variable "api_memory" {
+}
+
