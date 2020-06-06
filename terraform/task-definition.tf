@@ -12,7 +12,6 @@ data "template_file" "api-container-template" {
     image-url = aws_ecr_repository.repository-api.repository_url
     cpu       = var.api_cpu
     memory    = var.api_memory
-    fuga      = "zoy"
   }
 }
 
@@ -25,8 +24,4 @@ resource "aws_ecs_task_definition" "api-task-definition" {
   requires_compatibilities = ["FARGATE"]
   cpu                      = var.api_cpu
   memory                   = var.api_memory
-  # provisioner "local-exec" {
-  #   command = "./push-image.sh ${var.profile} api ${aws_ecr_repository.repository-api.name} ${aws_ecr_repository.repository-api.repository_url}"
-  # }
 }
-
