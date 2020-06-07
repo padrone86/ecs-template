@@ -1,33 +1,27 @@
 [
   {
-    "name" : "${product}-${env}-front-container",
+    "name" : "${product}-${env}-api-container",
     "portMappings": [
       {
-        "hostPort": 80,
+        "hostPort": 8080,
         "protocol": "tcp",
-        "containerPort": 80
+        "containerPort": 8080
       }
     ],
     "command": [
       "/bin/sh",
       "-c",
-      "nginx -g 'daemon off;'"
+      "json-server -H 0.0.0.0 -p 8080 -w /var/tmp/example.json"
     ],
     "cpu": ${cpu},
     "memory": ${memory},
     "memoryReservation": ${memory},
     "image": "${image-url}:latest",
-    "environment": [
-      {
-        "name": "HOGE",
-        "value": "${hoge}"
-      }
-    ],
     "healthCheck": {
       "retries": 10,
       "command": [
         "CMD-SHELL",
-        "curl -f http://localhost/ || exit 1"
+        "curl -f http://localhost:8080/objects || exit 1"
       ],
       "timeout": 20,
       "interval": 60,

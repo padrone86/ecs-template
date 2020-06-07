@@ -10,7 +10,8 @@ resource "aws_vpc" "vpc" {
 
   tags = {
     "Name"    = "${var.product}-${terraform.workspace}-vpc"
-    "Product" = "${var.product}"
-    "Env"     = "${terraform.workspace}"
+    "Product" = var.product
+    "Env"     = terraform.workspace
   }
 }
+
