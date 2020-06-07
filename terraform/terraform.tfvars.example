@@ -1,0 +1,5 @@
+region = "ap-northeast-1"
+product = "sample"
+profile = "sample"
+api_cpu = "1024"
+api_memory = "2048"

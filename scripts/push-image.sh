@@ -1,7 +1,7 @@
 # Check argument count
 if [ $# -ne 4 ]; then
   echo "ARGS: $#" 1>&2
-  echo "Error: Require argument=3" 1>&2
+  echo "Error: Require argument=4" 1>&2
   exit 1
 fi
 
@@ -13,7 +13,7 @@ ARG_REPOS_NAME=$3
 ARG_REPOS_URL=$4
 
 # AWS Login
-$(aws ecr get-login --no-include-email --profile ${ARG_PROFILE})
+aws ecr get-login-password --region ap-northeast-1 --profile ${ARG_PROFILE} | docker login --username AWS --password-stdin 545009660400.dkr.ecr.ap-northeast-1.amazonaws.com
 
 # Build
 docker build -t $ARG_REPOS_NAME:latest $ARG_DOCKERFILE_DIR
