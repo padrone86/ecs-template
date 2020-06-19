@@ -4,5 +4,5 @@ ECSでAPIサーバを立てるアプリケーション環境の初期構築テ�
 ## 前提
 - Terraform
 - tfenv
-- Cocker
+- Docker
 - AWS CLI
