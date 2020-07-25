@@ -1,2 +1,8 @@
 # ecs-template
-ECSを利用したSPA向け3層アプリケーション環境の初期構築テンプレート
+ECSでAPIサーバを立てるアプリケーション環境の初期構築テンプレート
+
+## 前提
+- Terraform
+- tfenv
+- Docker
+- AWS CLI

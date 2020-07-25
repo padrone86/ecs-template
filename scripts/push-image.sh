@@ -1,3 +1,5 @@
+#!/bin/bash -eu
+
 # Check argument count
 if [ $# -ne 4 ]; then
   echo "ARGS: $#" 1>&2
