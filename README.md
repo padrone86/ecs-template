@@ -6,3 +6,6 @@ ECSでAPIサーバを立てるアプリケーション環境の初期構築テ�
 - tfenv
 - Docker
 - AWS CLI
+
+## License
+MIT
